@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: grid;
+            justify-content: center;
+        }
+        div{
+            width: 500px;
+            border: 1px red solid;
+            text-align: center;
+        }
+        .inner{
+            width: 400px;
+            margin: auto;
+            line-height: 50px;
+            margin-bottom: 1px;
+            border-radius: 10px;
+            display: inline-flex;
+            border: 1px grey solid;
+
+        }
+        input{
+            height:46px;
+            width: 300px;
+            border: none;
+            margin:1px;
+            padding-left: 10px;
+            outline: none;
+            border-radius: 10px;
+
+        }
+        .addtask{
+            height: 50px;
+            width:100px;
+            background-color: transparent;
+            border: none;
+            border-radius: 10px;
+            background-color:green;
+            color: white;
+            border: 1px grey solid;
+        }
+        li{
+            list-style: none;
+            font-size: 20px;
+        }
+        .dBtn{
+            padding: 5px;
+            width: 80px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            background-color: red;
+            border: 1px grey solid;
+            border-radius: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Todo app</h1>
+    <div class="inner">
+        <input placeholder="Add task">
+        <button class="addtask">Add Task</button>
+    </div>
+    <h2>You have to do</h2>
+    <ul>
+        <li>eat <button class="dBtn">delete</button></li>
+        <li>sleep<button class="dBtn">delete</button></li>
+    </ul>
+
+    <script>
+
+        let btn = document.querySelector("button");
+        let ul = document.querySelector("ul");
+        let inp= document.querySelector("input");
+        let inn = document.querySelector(".inner");
+
+
+        btn.addEventListener("click",()=>{
+            let item = document.createElement("li");
+            item.innerText =  inp.value;
+            let delBtn = document.createElement("button");
+            delBtn.innerText = "delete";
+            item.style.fontSize = "20px";
+            // delBtn.classList.add("delete");
+            delBtn.classList.add("dBtn");
+            
+            console.log(item);
+            
+            
+            item.appendChild(delBtn);
+            ul.appendChild(item);
+
+            inp.value = "";
+        });
+
+
+        ul.addEventListener("click",function(e){
+            if(e.target.nodeName=="BUTTON") {
+                let listItem = e.target.parentElement;
+                listItem.remove();
+            }
+        })
+
+        
+        
+
+    </script>
+    </div>
+</body>
+</html>
